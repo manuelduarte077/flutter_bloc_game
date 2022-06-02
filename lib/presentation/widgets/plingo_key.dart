@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/colors.dart';
+import '../bloc/game_bloc.dart';
 
 /// Key cell on the Plingo Keyboard widget.
 class PlingoKey extends StatelessWidget {
@@ -25,7 +27,7 @@ class PlingoKey extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         // TODO: Implement event for letter pressed.
-        onTap: () {},
+        onTap: () => context.read<GameBloc>().add(LetterKeyPressed(letter)),
         splashColor: AppColors.primary.withOpacity(0.3),
         child: Center(
           child: Text(
