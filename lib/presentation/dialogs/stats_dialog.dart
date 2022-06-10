@@ -69,7 +69,7 @@ class GameStatsDialog extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: OutlinedButton(
             // TODO: Reset stats here!
-            onPressed: () {},
+            onPressed: () => context.read<StatsCubit>().resetStats(),
             child: const Text('Reset'),
           ),
         ),

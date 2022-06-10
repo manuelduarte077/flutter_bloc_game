@@ -13,4 +13,18 @@ class StatsCubit extends Cubit<StatsState> {
 
   /// Interacts with storage for updating game stats.
   final GameStatsRepository _statsRepository;
+
+  /// Fetches the current stats of the game.
+  Future<void> fetchStats() async {
+    final stats = await _statsRepository.fetchStats();
+
+    emit(state.copyWith(stats: stats));
+  }
+
+  /// Resets the stats stored.
+  Future<void> resetStats() async {
+    await _statsRepository.resetStats();
+
+    await fetchStats();
+  }
 }
